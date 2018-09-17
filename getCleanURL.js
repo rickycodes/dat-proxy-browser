@@ -5,7 +5,18 @@ export default input => {
     if (match) {
       // protocol is dat
       if (/dat/i.test(match[1])) {
-        console.log('proxy goes here')
+        const clean = input.replace('dat://', '')
+        // store proxy variables somewhere else!
+        fetch(`http://localhost:3000/post/${clean}`)
+          .then(res => {
+            return res.json();
+          })
+          .then(({ url }) => {
+            resolve(url)
+          })
+          .catch(error => {
+            console.log(error)
+          })
       } else {
         resolve(input)
       }

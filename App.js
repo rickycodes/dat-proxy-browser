@@ -3,6 +3,7 @@
 import React from 'react';
 import {
   WebView,
+  Text,
   TextInput,
   View
 } from 'react-native';
@@ -16,22 +17,33 @@ export default class App extends React.Component {
     super(props)
     this.state = {
       input: null,
-      url: null
+      url: null,
+      loading: false
     }
   }
 
   handleTextChange = text => this.setState({ input: text })
 
   setURL = input => {
+    this.setState({
+      loading: true
+    })
     getCleanURL(input)
       .then(url => {
         handleURL(url)
           .then(_ => {
-            this.setState({ url: url })
+            console.log(url)
+            this.setState({
+              url: url,
+              loading: false
+            })
           })
           .catch(_ => {
             // TODO: support other search engines?
-            this.setState({ url: `https://duckduckgo.com/?q=${input}` })
+            this.setState({
+              url: `https://duckduckgo.com/?q=${input}`,
+              loading: false
+            })
           })
     })
   }
@@ -46,8 +58,10 @@ export default class App extends React.Component {
     this.setState({ url: state.url })
   }
 
+  getValue = url => /localhost/.test(url) ? this.state.input : url
+
   render() {
-    const { url } = this.state
+    const { url, loading } = this.state
 
     return (
       <View style={styles.container}>
@@ -58,14 +72,15 @@ export default class App extends React.Component {
             style={styles.input}
             onChangeText={this.handleTextChange}
             onSubmitEditing={this.onSubmitEditing}
-            value={url}
+            value={this.getValue(url)}
           />
         </View>
-        {url && <WebView
+        {url && !loading && <WebView
           ref={r => this.webview = r}
           source={{ uri: url }}
           onNavigationStateChange={this.onNavigationStateChange}
         />}
+        {loading && <Text style={styles.placeholder}>Loading...</Text>}
       </View>
     );
   }

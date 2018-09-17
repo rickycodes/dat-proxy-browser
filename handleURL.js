@@ -1,6 +1,6 @@
 export default url => {
   return new Promise((resolve, reject) => {
-    fetch(url)
+    /^http/.test(url) ? fetch(url)
       .then(res => {
         if (res.ok) {
           resolve()
@@ -12,6 +12,6 @@ export default url => {
       })
       .catch(error => {
         reject(error)
-      })
+      }) : reject()
   })
 }

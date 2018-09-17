@@ -1,5 +1,10 @@
 import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
+  placeholder: {
+    marginTop: 40,
+    textAlign: 'center',
+    fontSize: 20
+  },
   input: {
     height: 36,
     marginTop: 16,
