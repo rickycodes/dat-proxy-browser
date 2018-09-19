@@ -4,11 +4,14 @@ import App from './components/app'
 
 import getCleanURL from './getCleanURL'
 import handleURL from './handleURL'
+import { SEARCH } from './constants'
+console.log(SEARCH)
 
 const mapStateToProps = state => state
 
 const mapDispatchToProps = dispatch => ({
-  setUrl: url => {
+  setUrl: url => dispatch(setUrl(url)),
+  cleanSearchUrl: url => {
     dispatch(toggleLoading())
     getCleanURL(url)
       .then(cleanUrl => {
@@ -18,7 +21,7 @@ const mapDispatchToProps = dispatch => ({
             dispatch(toggleLoading())
           })
           .catch(_ => {
-            dispatch(setUrl(`https://duckduckgo.com/?q=${url}`))
+            dispatch(setUrl(`https://${SEARCH}?q=${url}`))
             dispatch(toggleLoading())
           })
     })

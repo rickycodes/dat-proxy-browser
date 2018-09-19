@@ -8,19 +8,20 @@ import {
 
 // these need to go elsewhere
 import styles from '../styles'
+import PROXY_DOMAIN from '../constants'
 
 export default class App extends Component {
   onSubmitEditing = _ => {
-    this.props.setUrl(this.props.input, this.props.loading)
+    this.props.cleanSearchUrl(this.props.input)
   }
 
   onNavigationStateChange = state => {
-    // we'll not want this when the content is proxy (dat://)
-    this.setState({ url: state.url })
+    // this.props.setUrl(state.url)
   }
 
-  // we'll want to make the proxy host (and maybe IP?)
-  getValue = url => /localhost/.test(url) ? this.props.input : url
+  getValue = url => (new RegExp(PROXY_DOMAIN, 'i')).test(url)
+    ? this.props.input
+    : url
 
   render() {
     const { url, loading } = this.props
