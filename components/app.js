@@ -8,7 +8,7 @@ import {
 
 // these need to go elsewhere
 import styles from '../styles'
-import PROXY_DOMAIN from '../constants'
+import { PROXY_DOMAIN } from '../constants'
 
 export default class App extends Component {
   onSubmitEditing = _ => {
@@ -16,15 +16,16 @@ export default class App extends Component {
   }
 
   onNavigationStateChange = state => {
-    // this.props.setUrl(state.url)
+    this.props.setDisplayUrl(state.url)
   }
 
-  getValue = url => (new RegExp(PROXY_DOMAIN, 'i')).test(url)
-    ? this.props.input
-    : url
+  getValue = url => {
+    const regEx = new RegExp(PROXY_DOMAIN, 'i')
+    return regEx.test(url) ? this.props.input : url
+  }
 
   render() {
-    const { url, loading } = this.props
+    const { url, display_url, loading } = this.props
 
     return (
       <View style={styles.container}>
@@ -35,13 +36,13 @@ export default class App extends Component {
             style={styles.input}
             onChangeText={this.props.setInput}
             onSubmitEditing={this.onSubmitEditing}
-            value={this.getValue(url)}
+            value={this.getValue(display_url)}
           />
         </View>
         {url && !loading && <WebView
           ref={r => this.webview = r}
           source={{ uri: url }}
-          // onNavigationStateChange={this.onNavigationStateChange}
+          onNavigationStateChange={this.onNavigationStateChange}
         />}
         {loading && <Text style={styles.placeholder}>Loading...</Text>}
       </View>

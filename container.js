@@ -1,16 +1,20 @@
 import { connect } from 'react-redux'
-import { setUrl, setInput, toggleLoading } from './actions'
+import {
+  setUrl,
+  setDisplayUrl,
+  setInput,
+  toggleLoading
+} from './actions'
 import App from './components/app'
 
 import getCleanURL from './getCleanURL'
 import handleURL from './handleURL'
 import { SEARCH } from './constants'
-console.log(SEARCH)
 
 const mapStateToProps = state => state
 
 const mapDispatchToProps = dispatch => ({
-  setUrl: url => dispatch(setUrl(url)),
+  setDisplayUrl: url => dispatch(setDisplayUrl(url)),
   cleanSearchUrl: url => {
     dispatch(toggleLoading())
     getCleanURL(url)
@@ -30,6 +34,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(App)
+  mapStateToProps,
+  mapDispatchToProps
+)(App)

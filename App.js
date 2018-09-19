@@ -8,6 +8,7 @@ import App from './container'
 const initialState = {
   input: null,
   url: null,
+  display_url: null,
   loading: false
 }
 
