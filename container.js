@@ -3,7 +3,7 @@ import {
   setUrl,
   setDisplayUrl,
   setInput,
-  toggleLoading
+  setLoading
 } from './actions'
 import App from './components/app'
 
@@ -16,17 +16,17 @@ const mapStateToProps = state => state
 const mapDispatchToProps = dispatch => ({
   setDisplayUrl: url => dispatch(setDisplayUrl(url)),
   cleanSearchUrl: url => {
-    dispatch(toggleLoading())
+    dispatch(setLoading(true))
     getCleanURL(url)
       .then(cleanUrl => {
         handleURL(cleanUrl)
           .then(_ => {
             dispatch(setUrl(cleanUrl))
-            dispatch(toggleLoading())
+            dispatch(setLoading(false))
           })
           .catch(_ => {
             dispatch(setUrl(`https://${SEARCH}?q=${url}`))
-            dispatch(toggleLoading())
+            dispatch(setLoading(false))
           })
       })
   },

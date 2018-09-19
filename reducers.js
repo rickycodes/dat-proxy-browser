@@ -2,7 +2,7 @@ import {
   SET_URL,
   SET_DISPLAY_URL,
   SET_INPUT,
-  TOGGLE_LOADING
+  SET_LOADING
 } from './constants'
 
 const browser = (state = {}, action) => {
@@ -20,9 +20,9 @@ const browser = (state = {}, action) => {
       return {
         ...state, url: action.url
       }
-    case TOGGLE_LOADING:
+    case SET_LOADING:
       return {
-        ...state, loading: !state.loading
+        ...state, loading: action.loading
       }
     default:
       return state

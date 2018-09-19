@@ -2,7 +2,7 @@ import {
   SET_URL,
   SET_DISPLAY_URL,
   SET_INPUT,
-  TOGGLE_LOADING
+  SET_LOADING
 } from './constants'
 
 export function setUrl (url) {
@@ -26,8 +26,9 @@ export function setInput (input) {
   }
 }
 
-export function toggleLoading () {
+export function setLoading (loading) {
   return {
-    type: TOGGLE_LOADING
+    type: SET_LOADING,
+    loading
   }
 }
