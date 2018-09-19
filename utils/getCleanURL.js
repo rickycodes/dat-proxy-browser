@@ -1,7 +1,7 @@
 import {
   PROXY_DOMAIN,
   PROXY_PORT
-} from './constants'
+} from '../constants'
 
 export default input => {
   return new Promise((resolve, reject) => {

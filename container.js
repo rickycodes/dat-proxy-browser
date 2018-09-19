@@ -7,8 +7,8 @@ import {
 } from './actions'
 import App from './components/app'
 
-import getCleanURL from './getCleanURL'
-import handleURL from './handleURL'
+import getCleanURL from './utils/getCleanURL'
+import handleURL from './utils/handleURL'
 import { SEARCH } from './constants'
 
 const mapStateToProps = state => state
