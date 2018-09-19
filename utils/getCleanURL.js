@@ -4,8 +4,14 @@ import {
   PROXY_PORT
 } from '../constants'
 
+import { Observable } from 'rxjs'
+
 export default input => {
-  return new Promise((resolve, reject) => {
+  return Observable.create(observer => {
+    const end = url => {
+      observer.next(url)
+      observer.complete()
+    }
     // would be handy to capture what comes afterwards?
     const match = input.match(/^([\s\S]+)\s*:\/\//)
     if (match) {
@@ -17,17 +23,17 @@ export default input => {
             return res.json()
           })
           .then(({ url }) => {
-            resolve(url)
+            end(url)
           })
           .catch(error => {
             console.log(error)
           })
       } else {
-        resolve(input)
+        end(input)
       }
     } else {
       // assume http
-      resolve(`http://${input}`)
+      end(`http://${input}`)
     }
   })
 }
