@@ -1,3 +1,4 @@
+/* global fetch */
 import {
   PROXY_DOMAIN,
   PROXY_PORT
@@ -13,7 +14,7 @@ export default input => {
         const clean = input.replace('dat://', '')
         fetch(`http://${PROXY_DOMAIN}:${PROXY_PORT}/post/${clean}`)
           .then(res => {
-            return res.json();
+            return res.json()
           })
           .then(({ url }) => {
             resolve(url)
@@ -28,5 +29,5 @@ export default input => {
       // assume http
       resolve(`http://${input}`)
     }
-  })    
+  })
 }

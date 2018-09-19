@@ -28,7 +28,7 @@ const mapDispatchToProps = dispatch => ({
             dispatch(setUrl(`https://${SEARCH}?q=${url}`))
             dispatch(toggleLoading())
           })
-    })
+      })
   },
   setInput: input => dispatch(setInput(input))
 })

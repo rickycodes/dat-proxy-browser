@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
-  Text,
   TextInput,
   View
-} from 'react-native';
+} from 'react-native'
 
 import { PROXY_DOMAIN } from '../constants'
 import styles from '../styles'
@@ -18,8 +17,8 @@ class OmniSearch extends Component {
     this.props.cleanSearchUrl(this.props.input)
   }
 
-  render() {
-    const { display_url } = this.props
+  render () {
+    const { display_url } = this.props // eslint-disable-line
 
     return (
       <View style={styles.toolbar}>

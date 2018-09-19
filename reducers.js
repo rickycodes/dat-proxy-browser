@@ -1,8 +1,8 @@
 import {
-    SET_URL,
-    SET_DISPLAY_URL,
-    SET_INPUT,
-    TOGGLE_LOADING
+  SET_URL,
+  SET_DISPLAY_URL,
+  SET_INPUT,
+  TOGGLE_LOADING
 } from './constants'
 
 const browser = (state = {}, action) => {

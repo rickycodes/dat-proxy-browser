@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native'
 export default StyleSheet.create({
   placeholder: {
     marginTop: 40,
@@ -27,4 +27,4 @@ export default StyleSheet.create({
     display: 'flex',
     flex: 1
   }
-});
+})

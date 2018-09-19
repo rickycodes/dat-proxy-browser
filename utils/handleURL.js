@@ -1,3 +1,4 @@
+/* global fetch */
 export default url => {
   return new Promise((resolve, reject) => {
     /^http/.test(url) ? fetch(url)
@@ -12,6 +13,6 @@ export default url => {
       })
       .catch(error => {
         reject(error)
-      }) : reject()
+      }) : reject(new Error('Unknown protocol'))
   })
 }
