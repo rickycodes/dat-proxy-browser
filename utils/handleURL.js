@@ -9,7 +9,7 @@ export default url => {
         return res.blob()
       })
       .then(blob => {
-        console.log(blob)
+        // console.log(blob)
       })
       .catch(error => {
         reject(error)

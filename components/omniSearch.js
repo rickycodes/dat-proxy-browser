@@ -7,7 +7,7 @@ import {
 import { PROXY_DOMAIN } from '../constants'
 import styles from '../styles'
 
-class OmniSearch extends Component {
+export default class OmniSearch extends Component {
   getValue = url => {
     const regEx = new RegExp(PROXY_DOMAIN, 'i')
     return regEx.test(url) ? this.props.input : url
@@ -34,5 +34,3 @@ class OmniSearch extends Component {
     )
   }
 }
-
-export default OmniSearch

@@ -5,7 +5,7 @@ import {
   SET_LOADING
 } from './constants'
 
-const browser = (state = {}, action) => {
+export default (state = {}, action) => {
   // console.log(action)
   switch (action.type) {
     case SET_INPUT:
@@ -28,5 +28,3 @@ const browser = (state = {}, action) => {
       return state
   }
 }
-
-export default browser
