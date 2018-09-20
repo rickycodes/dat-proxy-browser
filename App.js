@@ -1,8 +1,8 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import browser from './reducers'
-import App from './container'
+import browser from './src/reducers'
+import App from './src/container'
 
 const initialState = {
   input: null,
