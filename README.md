@@ -1,13 +1,11 @@
-## dat-proxy-browser
+# DAT Proxy Browser
 
-### what is this?
-
-A _very_ rough sketch of a mobile web browser built with <a href='https://facebook.github.io/react-native/'>`react-native`</a> (an <a href='https://developer.chrome.com/extensions/omnibox'>"omnibar"</a> and a <a href='https://facebook.github.io/react-native/docs/webview'>`WebView`</a>). The secondary goal was for the browser to act as a gateway to an API (which I might eventually put up on GitHub as well) that acts as transport for (currently unsupported) decentralized protocols like <a href='https://datproject.org/'>`DAT`<a>.
+A _very_ rough sketch of a mobile web browser built with <a href='https://facebook.github.io/react-native/'>`react-native`</a> (an <a href='https://developer.chrome.com/extensions/omnibox'>"omnibar"</a> and a <a href='https://facebook.github.io/react-native/docs/webview'>`WebView`</a>). The browser interfaces with a gateway API (which I might eventually put up on GitHub as well) that acts as transport for (currently unsupported) decentralized protocols like <a href='https://datproject.org/'>`DAT`<a>.
 
 <p align='center'><img src='cap.gif'></p>
-<em>(Screen capture of the Application running on iOS simulator and loading some example `dat://` content)</em>
+<em>(Screen capture of the browser running on iOS simulator and loading an example `dat://` website)</em>
 
-<br /><br /><br />
+<br /><br />
 
 <details><summary>Create React Native App Mumbo Jumbo...</summary>
 <p>
