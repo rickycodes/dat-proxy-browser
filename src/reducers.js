@@ -2,11 +2,12 @@ import {
   SET_URL,
   SET_DISPLAY_URL,
   SET_INPUT,
-  SET_LOADING
+  SET_LOADING,
+  GO_BACK,
+  GO_FORWARD
 } from './constants'
 
 export default (state = {}, action) => {
-  // console.log(action)
   switch (action.type) {
     case SET_INPUT:
       return {
@@ -24,6 +25,12 @@ export default (state = {}, action) => {
       return {
         ...state, loading: action.loading
       }
+    case GO_BACK:
+      action.webview.goBack()
+      return { ...state }
+    case GO_FORWARD:
+      action.webview.goForward()
+      return { ...state }
     default:
       return state
   }

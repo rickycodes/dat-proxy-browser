@@ -13,7 +13,7 @@ export default (props) => {
   return (
     <View style={styles.container}>
       <OmniSearch {...props} />
-      {url && <BrowserWebView {...props} />}
+      {url && !loading && <BrowserWebView {...props} />}
       {loading && <Text style={styles.placeholder}>Loading...</Text>}
     </View>
   )

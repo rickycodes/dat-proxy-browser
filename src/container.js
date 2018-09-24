@@ -3,7 +3,9 @@ import {
   setUrl,
   setDisplayUrl,
   setInput,
-  setLoading
+  setLoading,
+  goBack,
+  goForward
 } from './actions'
 import App from './components/app'
 
@@ -15,6 +17,8 @@ let last
 
 const mapStateToProps = state => state
 const mapDispatchToProps = dispatch => ({
+  goBack: webview => dispatch(goBack(webview)),
+  goForward: webview => dispatch(goForward(webview)),
   setDisplayUrl: url => dispatch(setDisplayUrl(url)),
   cleanSearchUrl: url => {
     dispatch(setLoading(true))

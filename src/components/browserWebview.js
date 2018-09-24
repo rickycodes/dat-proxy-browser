@@ -11,14 +11,12 @@ export default class BrowserWebView extends Component {
     // this.props.setDisplayUrl(state.url)
   }
 
-  onSwipeLeft () {
-    console.log('Go Forward')
-    // console.log(this)
+  goBack () {
+    this.props.goBack(this.webview)
   }
 
-  onSwipeRight () {
-    console.log('Go Back!')
-    this.webview.goBack()
+  goForward () {
+    this.props.goForward(this.webview)
   }
 
   render () {
@@ -27,8 +25,8 @@ export default class BrowserWebView extends Component {
     return (
       <GestureView
         style={styles.container}
-        onSwipeLeft={this.onSwipeLeft.bind(this)}
-        onSwipeRight={this.onSwipeRight.bind(this)}>
+        onSwipeLeft={this.goForward.bind(this)}
+        onSwipeRight={this.goBack.bind(this)}>
         <WebView
           ref={c => (this.webview = c)}
           source={{ uri: url }}
