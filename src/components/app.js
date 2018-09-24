@@ -6,14 +6,14 @@ import {
 
 import styles from '../styles'
 import OmniSearch from './omniSearch'
-import BrowserWebView from './webview'
+import BrowserWebView from './browserWebview'
 
 export default (props) => {
   const { url, loading } = props
   return (
     <View style={styles.container}>
       <OmniSearch {...props} />
-      {url && !loading && <BrowserWebView {...props} />}
+      {url && <BrowserWebView {...props} />}
       {loading && <Text style={styles.placeholder}>Loading...</Text>}
     </View>
   )
