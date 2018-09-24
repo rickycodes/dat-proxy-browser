@@ -17,11 +17,9 @@ export default input => {
     if (match) {
       // protocol is dat
       if (/dat/i.test(match[1])) {
-        const clean = input.replace('dat://', '')
-        fetch(`http://${PROXY_DOMAIN}:${PROXY_PORT}/post/${clean}`)
-          .then(res => {
-            return res.json()
-          })
+        const key = input.replace('dat://', '')
+        fetch(`http://${PROXY_DOMAIN}:${PROXY_PORT}/dat/${key}`)
+          .then(res => res.json())
           .then(({ url }) => {
             end(url)
           })
