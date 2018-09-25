@@ -8,7 +8,7 @@ import styles from '../styles'
 
 export default class BrowserWebView extends Component {
   onNavigationStateChange = state => {
-    // this.props.setDisplayUrl(state.url)
+    this.props.setDisplayUrl(state.url)
   }
 
   goBack () {
@@ -20,16 +20,20 @@ export default class BrowserWebView extends Component {
   }
 
   render () {
-    const { url } = this.props
+    const { url, loading } = this.props
+    const _style = loading ?
+      styles._container :
+      styles.container
 
     return (
       <GestureView
-        style={styles.container}
+        style={_style}
         onSwipeLeft={this.goForward.bind(this)}
         onSwipeRight={this.goBack.bind(this)}>
         <WebView
           ref={c => (this.webview = c)}
           source={{ uri: url }}
+          onLoadEnd={this.props.onLoadEnd}
           onNavigationStateChange={this.onNavigationStateChange}
         />
       </GestureView>

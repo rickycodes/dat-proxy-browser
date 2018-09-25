@@ -1,4 +1,8 @@
 import { StyleSheet } from 'react-native'
+const container = {
+  display: 'flex',
+  flex: 1
+}
 export default StyleSheet.create({
   placeholder: {
     marginTop: 40,
@@ -23,8 +27,9 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center'
   },
-  container: {
-    display: 'flex',
-    flex: 1
+  container,
+  _container: {
+    ...container,
+    display: 'none'
   }
 })

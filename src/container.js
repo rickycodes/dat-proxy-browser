@@ -17,6 +17,7 @@ let last
 
 const mapStateToProps = state => state
 const mapDispatchToProps = dispatch => ({
+  onLoadEnd: _ => dispatch(setLoading(false)),
   goBack: webview => dispatch(goBack(webview)),
   goForward: webview => dispatch(goForward(webview)),
   setDisplayUrl: url => dispatch(setDisplayUrl(url)),
@@ -27,14 +28,8 @@ const mapDispatchToProps = dispatch => ({
     last = source.subscribe({
       next: cleanUrl => {
         handleURL(cleanUrl)
-          .then(_ => {
-            dispatch(setUrl(cleanUrl))
-            dispatch(setLoading(false))
-          })
-          .catch(_ => {
-            dispatch(setUrl(`https://${SEARCH}?q=${url}`))
-            dispatch(setLoading(false))
-          })
+          .then(_ => dispatch(setUrl(cleanUrl)))
+          .catch(_ => dispatch(setUrl(`https://${SEARCH}?q=${url}`)))
       }
     })
   },
