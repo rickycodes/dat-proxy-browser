@@ -36,15 +36,15 @@ export function setLoading (loading) {
 }
 
 export function goBack (webview) {
+  webview.goBack()
   return {
-    type: GO_BACK,
-    webview
+    type: GO_BACK
   }
 }
 
 export function goForward (webview) {
+  webview.goForward()
   return {
-    type: GO_FORWARD,
-    webview
+    type: GO_FORWARD
   }
 }
