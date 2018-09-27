@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {
-  WebView
+  WebView,
+  BackHandler
 } from 'react-native'
 
 import GestureView from 'react-native-gesture-view'
@@ -11,8 +12,14 @@ export default class BrowserWebView extends Component {
     this.props.setDisplayUrl(state.url)
   }
 
+  componentWillMount () {
+    // this doesn't appear to work
+    BackHandler.addEventListener('hardwareBackPress', this.goBack.bind(this))
+  }
+
   goBack () {
     this.props.goBack(this.webview)
+    return true
   }
 
   goForward () {
