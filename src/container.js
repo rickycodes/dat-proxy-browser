@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
 import {
   setUrl,
-  setDisplayUrl,
   setInput,
   setLoading,
   goBack,
@@ -20,7 +19,6 @@ const mapDispatchToProps = dispatch => ({
   onLoadEnd: _ => dispatch(setLoading(false)),
   goBack: webview => dispatch(goBack(webview)),
   goForward: webview => dispatch(goForward(webview)),
-  setDisplayUrl: url => dispatch(setDisplayUrl(url)),
   cleanSearchUrl: url => {
     dispatch(setLoading(true))
     if (last) last.unsubscribe()

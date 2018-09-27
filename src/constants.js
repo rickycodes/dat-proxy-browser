@@ -1,5 +1,4 @@
 const SET_URL = 'SET_URL'
-const SET_DISPLAY_URL = 'SET_DISPLAY_URL'
 const SET_INPUT = 'SET_INPUT'
 const SET_LOADING = 'SET_LOADING'
 const GO_BACK = 'GO_BACK'
@@ -11,7 +10,6 @@ const SEARCH = 'duckduckgo.com'
 
 export {
   SET_URL,
-  SET_DISPLAY_URL,
   SET_INPUT,
   SET_LOADING,
   GO_BACK,

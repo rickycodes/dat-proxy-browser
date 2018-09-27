@@ -15,7 +15,6 @@ export default class BrowserWebView extends Component {
   }
 
   onNavigationStateChange = ({ url }) => {
-    this.props.setDisplayUrl(url)
     this.props.setInput(this.getValue(url))
   }
 

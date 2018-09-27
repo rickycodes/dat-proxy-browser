@@ -12,8 +12,6 @@ export default class OmniSearch extends Component {
   }
 
   render () {
-    const { display_url } = this.props // eslint-disable-line
-
     return (
       <View style={styles.toolbar}>
         <TextInput
