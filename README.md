@@ -7,7 +7,48 @@ A _very_ rough sketch of a mobile web browser built with <a href='https://facebo
 <p align='center'><img src='cap.gif'></p>
 <em>(Screen capture of the browser running on iOS simulator and loading an example `dat://` website)</em>
 
-<br /><br />
+## Example DAT proxy gateway API:
+```js
+const express = require('express')
+const app = express()
+const port = 3000
+const host = 'localhost'
+const startUpMsg = `proxy listening on port ${port}!`
+const serveIndex = require('serve-index')
+const Dat = require('dat-node')
+const path = require('path')
+
+app.use(express.static(__dirname + '/dats'))
+app.use('/', serveIndex(__dirname + '/dats'))
+
+app.use(function (req, res, next) {
+  const orig = req.url
+  const { referer, host } = req.headers
+  if (referer && /^(\/)/.test(req.url)) {
+    // account for relative asset paths
+    const folder = referer.replace(`http://${host}/`, '')
+    res.redirect(`/${folder.replace('/', '')}${req.url}`)
+  }
+
+  next()
+})
+
+app.get('/dat/:key', (req, res) => {
+  const { key } = req.params
+  Dat(`./dats/${key}`, {
+    key: key
+  }, function (err, dat) {
+    if (err) throw err
+    dat.joinNetwork({}, _ => {
+      res.json({
+        url: `http://${host}:${port}/${key}`
+      })
+    })
+  })
+})
+
+app.listen(port, _ => console.log(startUpMsg))
+```
 
 <details><summary>Create React Native App Mumbo Jumbo...</summary>
 <p>
