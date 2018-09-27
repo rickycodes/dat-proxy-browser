@@ -6,14 +6,20 @@ import {
 
 import GestureView from 'react-native-gesture-view'
 import styles from '../styles'
+import { PROXY_DOMAIN } from '../constants'
 
 export default class BrowserWebView extends Component {
-  onNavigationStateChange = state => {
-    this.props.setDisplayUrl(state.url)
+  getValue = url => {
+    const regEx = new RegExp(PROXY_DOMAIN, 'i')
+    return regEx.test(url) ? this.props.input : url
+  }
+
+  onNavigationStateChange = ({ url }) => {
+    this.props.setDisplayUrl(url)
+    this.props.setInput(this.getValue(url))
   }
 
   componentWillMount () {
-    // this doesn't appear to work
     BackHandler.addEventListener('hardwareBackPress', this.goBack.bind(this))
   }
 
