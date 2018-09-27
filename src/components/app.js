@@ -11,7 +11,7 @@ import BrowserWebView from './browserWebview'
 export default (props) => {
   const { url, loading } = props
   return (
-    <View style={styles.container}>
+    <View style={styles.bg}>
       <OmniSearch {...props} />
       {url && <BrowserWebView {...props} />}
       {loading && <Text style={styles.placeholder}>Loading...</Text>}

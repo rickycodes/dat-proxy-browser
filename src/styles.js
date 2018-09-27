@@ -27,8 +27,14 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center'
   },
-  container,
-  _container: {
+  bg: {
+    ...container
+    // backgroundColor: 'grey'
+  },
+  webview: {
+    ...container
+  },
+  _webview: {
     ...container,
     display: 'none'
   }

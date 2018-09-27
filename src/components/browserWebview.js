@@ -22,8 +22,8 @@ export default class BrowserWebView extends Component {
   render () {
     const { url, loading } = this.props
     const _style = loading
-      ? styles._container
-      : styles.container
+      ? styles._webview
+      : styles.webview
 
     return (
       <GestureView
